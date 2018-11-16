@@ -1,3 +1,6 @@
+data
+info/*
+info-log-dev/*
 *.csv
 *.json
 *.ipynb
@@ -5,6 +8,9 @@
 *.jpg
 *.txt
 *.pdf
+*.tex
+*.DS_Store
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

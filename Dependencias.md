@@ -6,7 +6,10 @@ docker
 
 ### Python
 
-matplotlib, sklearn, numpy, pandas
+Dependencias de python, instalar con pip o conda.
+
+    pip install matplotlib, sklearn, numpy, pandas
+    pip install seaborn
 
 ### Audio Commons Extractor
 
