@@ -46,7 +46,7 @@ def main():
                 audio_input = subdir+'/'+f
                 try:
                     print(( "\n*** Processing %s\n"%f ))
-                    subprocess.call("ffmpeg -i \"%s\" \"%s\""%(audio_input,waves_dir+os.path.splitext(f)[0]+'.wav'), shell=True)
+                    subprocess.call("ffmpeg -i \"%s\" \"%s\""%(audio_input,waves_dir+str(i)+'_'+os.path.splitext(f)[0]+'.wav'), shell=True)
 
                     db_files[i] = audio_input
                     i+=1

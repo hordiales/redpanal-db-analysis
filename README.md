@@ -1,49 +1,59 @@
 # Introducción
 
+A partir de un dataset generado a partir de la extracción de características (features) de la base de datos de sonidos de [RedPanal](https://redpanal.org), un sitio colaborativo que almacena y reproduce a demanda sonidos compartidos con licencias del tipo [Creative Commons](https://creativecommons.org/), se busca extraer conocimiento sobre la composición de la base de datos utilizando diferentes algoritmos de Machine Learning.
+
+Para extraer features de los archivos de sonido se utilizo el [Audio Commons Extractor](https://github.com/AudioCommons/ac-audio-extractor) que genera para cada sonido un archivo JSON con diferentes valores como: duración, tonalidad, rango dinámico, volumen, si es el sonido es "loopeable o no", si se trata de un "evento único" o no, entre otros.
+
+Originalmente la idea era analizar aquellos cuya duración era menor a 5 segundos, ya que a priori se pensaba que de los mismos se podía extraer mejor información, ya que su contenido no varia tanto en el tiempo, pero se descartó, ya que se encontró que el dataset elegido contaba con muy pocas instancias de este tipo.
+
+## Dependencias
+
+Consultar [Dependencias.md](Dependencias.md)
+
+
 # Armar Dataset
 
-### Paso 1
+Se utilizan los archivos .py especialmente programados para esta tarea.
+
+### Paso 1: Convertir archivos a .wav
 
 Convertir todos los archivos de audio a un mismo formato estándar como WAV 16bits y 44.1kHz
 
-    ./convert_all_files_to_wav.py [FILES_DIR]
+Sintaxis: ./1_convert_all_files_to_wav.py [FILES_DIR] [WAVS_DIR]
 
+    $ mkdir ../../wavs
+    $ ./1_convert_all_files_to_wav.py ../../redpanal_audios/ ../../wavs/
 
 ### Paso 2: Calcular features/descriptores MIR
 
-    ./files_mir_analysis.py [FILES_DIR]
+Sintaxis: ./2_files_mir_analysis.py [FILES_DIR] [JSON_DIR]
 
-Flags: -smt
-  -t, --timbral-models  include descriptors computed from timbral models
-  -m, --music-pieces    include descriptors designed for music pieces
-  -s, --music-samples   include descriptors designed for music samples
+Este paso hace uso del [Audio Commons Extractor](https://github.com/AudioCommons/ac-audio-extractor) mencionado, utilizando el contenedor Docker y se configura para utilizar generar por cada archivo de audio un .json plano o con la ontología para descripción de audio propuesta por el artículo: https://www.audiocommons.org/2018/07/15/audio-commons-audio-extractor.html.
 
-Formato del json (linked data): + info en https://json-ld.org/
-JSON_MIR_FORMAT = 'jsonld' # json compatible con Audio Commons Ontology
-The Audio Feature Ontology is a Semantic Web ontology that is designed to serve a dual purpose:
+Note: se necesita $PWD o full path (por cuestiones de Docker)
 
+    $ mkdir json
+    $ ./2_files_mir_analysis.py $PWD/../../wavs/ $PWD/json/
 
-sino -f json --> json standard (SIN ontología de web semántica)
+### (opcional) Paso 3: Separa canciones de 'muestras' según duración
 
-single_event: Whether the audio file contains one single audio event or more than one (true or false). This computation is based on the loudness of the signal and does not do any frequency analysis.
+Este paso se aplica solo para algunos análisis y separa sonidos de menos de 5 segundos de duración en diferentes directorios.
+ 
+Sintaxis: ./3_separate_samples_and_songs.py ./json
 
-    if compute_timbral_models:
-        if is_single_event(audiofile):
-            ac_timbral_models(audiofile, ac_descriptors)
-        else:
-            logger.debug('{0}: skipping computation of timbral models as audio is not single event'.format(audiofile))
+### Paso 4: Convertir los archivos JSON en un único archivo separado por comas (.csv)
 
-Source code: https://github.com/AudioCommons/ac-audio-extractor
-Reference:  https://www.audiocommons.org/2018/07/15/audio-commons-audio-extractor.html
+Genera un único archivo .csv compatible con python sklearn o R según configuración.
 
-### Paso 3: 
+Sintaxis: ./4_json_files_to_csv.py json-songs/
 
+Se calcula la cantidad de líneas generadas:
 
-# Dependencias
+    cat snd-dataset-from-plain-json.csv | wc -l
+    1018
 
-python3
-ffmpeg
-docker
+Por lo cual se observa que el dataset se compone de 1018 instancias.
 
-El extractor con docker, se puede correr nativo (como alternativa a docker)
-Referencia: https://www.audiocommons.org/2018/07/15/audio-commons-audio-extractor.html
+----------
+
+**Siguente:** [1 - Visualización y clustering (no supervisado)](1%20-%20Visualización%20y%20clustering%20(no%20supervisado).ipynb)
