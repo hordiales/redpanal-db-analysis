@@ -10,6 +10,11 @@ Originalmente la idea era analizar aquellos cuya duración era menor a 5 segundo
 
 Consultar [Dependencias.md](Dependencias.md)
 
+# Vista General
+
+![](img/análisis-general.png)
+
+Nota: Consultar los notebooks (.ipynb) para detalles.
 
 # Armar Dataset
 
