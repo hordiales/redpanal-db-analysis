@@ -14,7 +14,7 @@ Consultar [Dependencias.md](Dependencias.md)
 
 ![](img/análisis-general.png)
 
-Nota: Consultar los notebooks (archivos .ipynb) para más detalles. Se puede ver online y navegar en [0 - Introducción y construcción del Dataset.ipynb](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/0%20-%20Introduccio%CC%81n%20y%20construccio%CC%81n%20del%20Dataset.ipynb)
+Nota: Consultar los notebooks (archivos .ipynb) para más detalles. Se puede ver online y navegar en [nbviewer: 0 - Introducción y construcción del Dataset](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/0%20-%20Introducci%C3%B3n%20y%20construcci%C3%B3n%20del%20Dataset.ipynb).
 
 # Armar Dataset
 
