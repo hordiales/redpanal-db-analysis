@@ -14,7 +14,7 @@ Consultar [Dependencias.md](Dependencias.md)
 
 ![](img/análisis-general.png)
 
-Nota: Consultar los notebooks (.ipynb) para detalles.
+Nota: Consultar los notebooks (archivos .ipynb) para más detalles. Se puede ver online y navegar en [0 - Introducción y construcción del Dataset.ipynb](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/0%20-%20Introduccio%CC%81n%20y%20construccio%CC%81n%20del%20Dataset.ipynb)
 
 # Armar Dataset
 
@@ -61,4 +61,4 @@ Por lo cual se observa que el dataset se compone de 1018 instancias.
 
 ----------
 
-**Siguente:** [1 - Visualización y clustering (no supervisado)](1%20-%20Visualización%20y%20clustering%20(no%20supervisado).ipynb)
+**Siguente:** [1 - Visualización y clustering (no supervisado)](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/1%20-%20Visualizacio%CC%81n%20y%20clustering.ipynb)
