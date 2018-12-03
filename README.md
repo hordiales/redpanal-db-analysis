@@ -61,4 +61,4 @@ Por lo cual se observa que el dataset se compone de 1018 instancias.
 
 ----------
 
-**Siguente:** [1 - Visualización y clustering (no supervisado)](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/1%20-%20Visualizacio%CC%81n%20y%20clustering.ipynb)
+**Siguente:** [1 - Visualización y clustering (no supervisado)](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/1%20-%20Visualizaci%C3%B3n%20y%20clustering.ipynb)
