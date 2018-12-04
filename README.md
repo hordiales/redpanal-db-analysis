@@ -14,7 +14,16 @@ Consultar [Dependencias.md](Dependencias.md)
 
 ![](img/análisis-general.png)
 
-Nota: Consultar los notebooks (archivos .ipynb) para más detalles. Se puede ver online y navegar en [nbviewer: 0 - Introducción y construcción del Dataset](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/0%20-%20Introducci%C3%B3n%20y%20construcci%C3%B3n%20del%20Dataset.ipynb).
+# Índice
+
+Para más detalles, consultar los jupyter notebooks (archivos .ipynb. También se pueden ver online y navegar a través de los siguientes links:
+
+* [0 - Introducción y construcción del Dataset](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/0%20-%20Introducción%20y%20construcción%20del%20Dataset.ipynb)
+* [1 - Visualización y clustering](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/1%20-%20Visualización%20y%20clustering.ipynb)
+* [2a - Regresión Logística y análisis del dataset con R](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/2a%20-%20Regresión%20Logística%20y%20análisis%20del%20dataset%20con%20R.ipynb)
+* [2b - Predicción usando variables dicotómicas - regresión](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/2b%20-%20Predicción%20usando%20variables%20dicotómicas%20-%20regresión.ipynb)
+* [3 - Reducción de la dimensionalidad SVD y PCA](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/3%20-%20Reducción%20de%20la%20dimensionalidad%20SVD%20y%20PCA.ipynb)
+* [4 - Conclusión final](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/4%20-%20Conclusión%20final.ipynb)
 
 # Armar Dataset
 
