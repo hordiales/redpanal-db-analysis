@@ -1,3 +1,17 @@
+data
+info/*
+info-log-dev/*
+*.csv
+*.json
+*.ipynb
+*.png
+*.jpg
+*.txt
+*.pdf
+*.tex
+*.DS_Store
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

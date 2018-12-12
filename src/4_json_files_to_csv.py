@@ -21,10 +21,10 @@ import logging
 import json
 
 EXT_FILTER = ['.json']
-OUTPUT_CSV_FILE = 'snd-dataset.csv'
+OUTPUT_CSV_FILE = 'snd-dataset-from-plain-json.csv'
 
-CSV_TYPE = 'R' # read with: data <- read.table("Rsnd-dataset.csv", header=TRUE, sep=",", comment.char = "$")
-#CSV_TYPE = 'sklearn'
+# CSV_TYPE = 'R' # read with: data <- read.table("Rsnd-dataset.csv", header=TRUE, sep=",", comment.char = "$")
+CSV_TYPE = 'sklearn'
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)  
@@ -51,10 +51,10 @@ def main():
 
         # Warning: Key es Categoria (G, G major, etc)
         if CSV_TYPE=='R':
-            csv_file.write( """"Duration","Loudness","LogAttackTime","Tempo","Tempo.confidence","TemporalCentroid","Pitch","Pitch.confidence","Key","Key.confidence","Loop"\n""" )
+            csv_file.write( """"Duration","Loudness","LogAttackTime","Tempo","Tempo.confidence","TemporalCentroid","Pitch","Pitch.confidence","Key","Key.confidence","Loop","SingleEvent","Loop","Tonality","Tonality.confidence","DynamicRange","Note.midi","Note.frequency","Note.confidence","Genre","Mood"\n""" )
         else:
             #WARNING: separate with ',' without spaces! (pandas compatibility)
-            csv_file.write( "Duration,Loudness,LogAttackTime,Tempo,Tempo.confidence,TemporalCentroid,Pitch,Pitch.confidence,Key,Key.confidence,Loop\n")
+            csv_file.write( "Duration,Loudness,LogAttackTime,Tempo,Tempo.confidence,TemporalCentroid,SingleEvent,Loop,Tonality,Tonality.confidence,DynamicRange,Note.midi,Note.frequency,Note.confidence,Genre,Mood\n") 
 
         for subdir, dirs, files in os.walk(files_dir):
             for f in files:
@@ -65,43 +65,32 @@ def main():
                 json_file = subdir+'/'+f
                 try:
                     data = json.load( open(json_file,'r') )
-
                     new_line = ""
-                    new_line += str(data["ac:signalDuration"]) + ','
-                    # print(data["ac:signalAudioFeature"])
-                    features = dict()
-                    for item in data["ac:signalAudioFeature"]:
-                        if item["@type"]=="afv:Loudness":
-                            features['Loudness'] = str( item["afo:value"] )
-                        elif item["@type"]=="afv:LogAttackTime":
-                            features['LogAttackTime'] = str( item["afo:value"] )
-                        elif item["@type"]=="afv:Tempo":
-                            features['Tempo'] = str( item["afo:value"] )
-                            features['Tempo.confidence'] = str( item["afo:confidence"] )
-                        elif item["@type"]=="afv:TemporalCentroid":
-                            features['TemporalCentroid'] = str( item["afo:value"] )
-                        elif item["@type"]=="afv:Pitch":
-                            features['Pitch'] = str( item["afo:value"] )
-                            features['Pitch.confidence'] = str( item["afo:confidence"] )
-                        elif item["@type"]=="afv:Key":
-                            features['Key'] = str( item["afo:value"] )
-                            features['Key.confidence'] = str( item["afo:confidence"] )
-                        elif item["@type"]=="afv:Loop":
-                            features['Loop'] = str( item["afo:value"] )
 
-                    # Duration, Loudness, LogAttackTime, Tempo, Tempo.confidence, TemporalCentroid, Pitch, Pitch.confidence, Key, Key.confidence, Loop?
-                    # Warning: Key es Categoria (G, G major, etc)
-                    # print(features)
-                    new_line += features['Loudness']+','
-                    new_line += features['LogAttackTime']+','
-                    new_line += features['Tempo']+','
-                    new_line += features['Tempo.confidence']+','
-                    new_line += features['TemporalCentroid']+','
-                    new_line += features['Pitch']+','
-                    new_line += features['Pitch.confidence']+','
-                    new_line += features['Key']+','
-                    new_line += features['Key.confidence']+','
-                    new_line += features['Loop']
+                    # Duration, Loudness, LogAttackTime, Tempo, Tempo.confidence, TemporalCentroid,
+                    # SingleEvent, Loop, Tonality, TonalityConfidence, DynamicRange, NoteMIDI, NoteFrequency, NoteConfidence, Genre, Mood   
+                    # Warning: Tonality es Categoria (G, G major, etc), como Key en el otro json
+                    new_line += str(data["duration"]) + ','
+                    new_line += str(data['loudness'])+','
+                    new_line += str(data['log_attack_time'])+','
+                    new_line += str(data['tempo'])+','
+                    new_line += str(data['tempo_confidence'])+','
+                    new_line += str(data['temporal_centroid'])+','
+                    # hasta acá igual al otro json (compatible)
+                    new_line += str(data['single_event'])+','
+                    new_line += str(data['loop'])+','
+                    new_line += str(data['tonality'])+','
+                    new_line += str(data['tonality_confidence'])+','
+                    new_line += str(data['dynamic_range'])+','
+                    new_line += str(data['note_midi'])+','
+                    new_line += str(data['note_frequency'])+','
+                    new_line += str(data['note_confidence'])+','
+                    new_line += str(data['genre'])+','
+                    new_line += str(data['mood'])
+
+                    if data['single_event']==True:
+                        print("Single event! " + f)
+                        more_data = dict()
 
                     csv_file.write( new_line + '\n' )
 

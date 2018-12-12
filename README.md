@@ -1,49 +1,26 @@
 # Introducción
 
-# Armar Dataset
+A partir de un dataset generado a partir de la extracción de características (features) de la base de datos de sonidos de [RedPanal](https://redpanal.org), un sitio colaborativo que almacena y reproduce a demanda sonidos compartidos con licencias del tipo [Creative Commons](https://creativecommons.org/), se busca extraer conocimiento sobre la composición de la base de datos utilizando diferentes algoritmos de Machine Learning.
 
-### Paso 1
+Para extraer features de los archivos de sonido se utilizo el [Audio Commons Extractor](https://github.com/AudioCommons/ac-audio-extractor) que genera para cada sonido un archivo JSON con diferentes valores como: duración, tonalidad, rango dinámico, volumen, si es el sonido es "loopeable o no", si se trata de un "evento único" o no, entre otros.
 
-Convertir todos los archivos de audio a un mismo formato estándar como WAV 16bits y 44.1kHz
+Originalmente la idea era analizar aquellos cuya duración era menor a 5 segundos, ya que a priori se pensaba que de los mismos se podía extraer mejor información, ya que su contenido no varia tanto en el tiempo, pero se descartó, ya que se encontró que el dataset elegido contaba con muy pocas instancias de este tipo.
 
-    ./convert_all_files_to_wav.py [FILES_DIR]
+## Dependencias
 
+Consultar [Dependencias.md](Dependencias.md)
 
-### Paso 2: Calcular features/descriptores MIR
+# Vista General
 
-    ./files_mir_analysis.py [FILES_DIR]
+![](img/análisis-general.png)
 
-Flags: -smt
-  -t, --timbral-models  include descriptors computed from timbral models
-  -m, --music-pieces    include descriptors designed for music pieces
-  -s, --music-samples   include descriptors designed for music samples
+# Índice
 
-Formato del json (linked data): + info en https://json-ld.org/
-JSON_MIR_FORMAT = 'jsonld' # json compatible con Audio Commons Ontology
-The Audio Feature Ontology is a Semantic Web ontology that is designed to serve a dual purpose:
+Para más detalles, consultar los jupyter notebooks (archivos .ipynb. También se pueden ver online y navegar a través de los siguientes links:
 
-
-sino -f json --> json standard (SIN ontología de web semántica)
-
-single_event: Whether the audio file contains one single audio event or more than one (true or false). This computation is based on the loudness of the signal and does not do any frequency analysis.
-
-    if compute_timbral_models:
-        if is_single_event(audiofile):
-            ac_timbral_models(audiofile, ac_descriptors)
-        else:
-            logger.debug('{0}: skipping computation of timbral models as audio is not single event'.format(audiofile))
-
-Source code: https://github.com/AudioCommons/ac-audio-extractor
-Reference:  https://www.audiocommons.org/2018/07/15/audio-commons-audio-extractor.html
-
-### Paso 3: 
-
-
-# Dependencias
-
-python3
-ffmpeg
-docker
-
-El extractor con docker, se puede correr nativo (como alternativa a docker)
-Referencia: https://www.audiocommons.org/2018/07/15/audio-commons-audio-extractor.html
+* [0 - Introducción y construcción del Dataset](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/0%20-%20Introducción%20y%20construcción%20del%20Dataset.ipynb)
+* [1 - Visualización y clustering](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/1%20-%20Visualización%20y%20clustering.ipynb)
+* [2a - Regresión Logística y análisis del dataset con R](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/2a%20-%20Regresión%20Logística%20y%20análisis%20del%20dataset%20con%20R.ipynb)
+* [2b - Predicción usando variables dicotómicas - regresión](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/2b%20-%20Predicción%20usando%20variables%20dicotómicas%20-%20regresión.ipynb)
+* [3 - Reducción de la dimensionalidad SVD y PCA](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/3%20-%20Reducción%20de%20la%20dimensionalidad%20SVD%20y%20PCA.ipynb)
+* [4 - Conclusión final](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/4%20-%20Conclusión%20final.ipynb)
