@@ -22,7 +22,7 @@ import logging
 import json
 
 EXT_FILTER = ['.wav']
-JSON_MIR_FORMAT = 'json' # json basic format
+#JSON_MIR_FORMAT = 'json' # json basic format
 JSON_MIR_FORMAT = 'jsonld' # json compatible con Audio Commons Ontology
 
 
