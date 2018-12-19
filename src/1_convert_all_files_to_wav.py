@@ -14,7 +14,7 @@ import subprocess
 import logging
 import json
 
-EXT_FILTER = ['.mp3','.ogg','.wav','.wma','.m4a']
+EXT_FILTER = ['.mp3','.ogg','.wav','.wma','.m4a', '.oga', '.flac']
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)  
@@ -41,15 +41,13 @@ def main():
             for f in files:
                 if not os.path.splitext(f)[1] in EXT_FILTER:
                     continue
-                tag_dir = subdir
                 input_filename = f
                 audio_input = subdir+'/'+f
                 try:
-                    print(( "\n*** Processing %s\n"%f ))
-                    subprocess.call("ffmpeg -i \"%s\" \"%s\""%(audio_input,waves_dir+str(i)+'_'+os.path.splitext(f)[0]+'.wav'), shell=True)
-
+                    print( "\n*** Processing %s\n"%f )
+                    subprocess.call("ffmpeg -i \"%s\" \"%s\""%(audio_input,waves_dir+'/'+str(i)+'_'+os.path.splitext(f)[0]+'.wav'), shell=True)
                     db_files[i] = audio_input
-                    i+=1
+                    i += 1
                 except Exception as e:
                     print(logger.exception(e))
                     error_count += 1 

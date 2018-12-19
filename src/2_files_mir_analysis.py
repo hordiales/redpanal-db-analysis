@@ -21,9 +21,10 @@ import subprocess
 import logging
 import json
 
-EXT_FILTER = ['.wav']
-#JSON_MIR_FORMAT = 'json' # json basic format
-JSON_MIR_FORMAT = 'jsonld' # json compatible con Audio Commons Ontology
+#EXT_FILTER = ['.wav'] # only wavs
+EXT_FILTER = ['.wav', '.mp3', '.m4a', '.ogg', '.oga', '.flac'] # preserver original format
+JSON_MIR_FORMAT = 'json' # json basic format (plain)
+#JSON_MIR_FORMAT = 'jsonld' # json compatible con Audio Commons Ontology
 
 
 logging.basicConfig(level=logging.DEBUG)
