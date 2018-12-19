@@ -23,8 +23,8 @@ import json
 EXT_FILTER = ['.json']
 OUTPUT_CSV_FILE = 'snd-dataset-from-json-ld.csv'
 
-CSV_TYPE = 'R' # read with: data <- read.table("Rsnd-dataset.csv", header=TRUE, sep=",", comment.char = "$")
-# CSV_TYPE = 'sklearn'
+#CSV_TYPE = 'R' # read with: data <- read.table("Rsnd-dataset.csv", header=TRUE, sep=",", comment.char = "$")
+CSV_TYPE = 'sklearn'
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)  

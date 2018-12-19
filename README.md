@@ -16,7 +16,7 @@ Consultar [Dependencias.md](Dependencias.md)
 
 # Índice
 
-Para más detalles, consultar los jupyter notebooks (archivos .ipynb. También se pueden ver online y navegar a través de los siguientes links:
+Para más detalles, consultar los archivos .ipynb (jupyter notebooks). También se pueden ver online y navegar a través de los siguientes links:
 
 * [0 - Introducción y construcción del Dataset](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/0%20-%20Introducción%20y%20construcción%20del%20Dataset.ipynb)
 * [1 - Visualización y clustering](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/1%20-%20Visualización%20y%20clustering.ipynb)
