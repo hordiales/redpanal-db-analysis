@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
-""" 
+"""
 Recorre un directorio con wavs y extrae descriptores MIR para todos los archivos de audio .wav
 
 Utiliza docker, aunque podría hacerse instalando las dependencias de Essentia
     Ejemplo: docker run -it --rm -v `pwd`:/tmp mtgupf/ac-audio-extractor:v2 -i /tmp/audio.wav -o /tmp/analysis.json -smt
     Referencia: https://www.audiocommons.org/2018/07/15/audio-commons-audio-extractor.html
 
-Flags: -smt
-  -t, --timbral-models  include descriptors computed from timbral models
-  -m, --music-pieces    include descriptors designed for music pieces
-  -s, --music-samples   include descriptors designed for music samples
+    Flags: -smt
+      -t, --timbral-models  include descriptors computed from timbral models
+      -m, --music-pieces    include descriptors designed for music pieces
+      -s, --music-samples   include descriptors designed for music samples
 """
 
 import os
@@ -41,7 +41,7 @@ def main():
         files_dir = sys.argv[1] 
         JSON_FILES_DIR = sys.argv[2] 
 
-        if not os.path.exists(files_dir):                         
+        if not os.path.exists(files_dir):
             raise IOError("There is no sound directory")
 
         error_count = 0
@@ -49,19 +49,22 @@ def main():
             for f in files:
                 if not os.path.splitext(f)[1] in EXT_FILTER:
                     continue
-                tag_dir = subdir
                 input_filename = f
                 audio_input = subdir+'/'+f
+                json_output = os.path.splitext(f)[0]+'.json'
 
                 try:
                     print(( "\n*** MIR extract %s\n"%f ))
 
-                    subprocess.call("docker run -it --rm -v \"%s\":/tmp -v %s:/json mtgupf/ac-audio-extractor:v2 -i \"%s\" -o \"%s\" -smt -f %s"%(subdir, JSON_FILES_DIR, '/tmp/'+f, '/json/'+os.path.splitext(f)[0]+'.json',JSON_MIR_FORMAT), shell=True)
+                    if not os.path.isfile( JSON_FILES_DIR+json_output ):
+                        subprocess.call("docker run -it --rm -v \"%s\":/tmp -v %s:/json mtgupf/ac-audio-extractor:v2 -i \"%s\" -o \"%s\" -smt -f %s"%(subdir, JSON_FILES_DIR, '/tmp/'+f, '/json/'+json_output, JSON_MIR_FORMAT), shell=True)
+                    else:
+                        print("JSON file already exists")
 
                 except Exception as e:
                     print(logger.exception(e))
                     error_count += 1 
-                    continue					                		                        
+                    continue
 
         print(("Errors: %i"%error_count))
         sys.exit( error_count )
