@@ -8,7 +8,7 @@ Originalmente la idea era analizar aquellos cuya duración era menor a 5 segundo
 
 ## Dependencias
 
-Consultar [Dependencias.md](Dependencias.md)
+Consultar [Dependencias.md](Dependencias.md)    
 
 # Vista General
 
@@ -24,10 +24,10 @@ Para más detalles, consultar los archivos .ipynb (jupyter notebooks). También 
 
 * [0 - Introducción y construcción del Dataset](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/dd5a9d930883ffeebe2ca82cc7d7bd25c41dfe2c/notebooks/0%20-%20Introducción%20y%20construcción%20del%20Dataset.ipynb)
 * [1 - Visualización y clustering](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/dd5a9d930883ffeebe2ca82cc7d7bd25c41dfe2c/notebooks/1%20-%20Visualizaci%C3%B3n%20y%20clustering.ipynb)
-* [2a - Regresión Logística y análisis del dataset con R](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/notebooks/02a%20-%20Regresión%20Logística%20y%20análisis%20del%20dataset%20con%20R.ipynb)
-* [2b - Predicción usando variables dicotómicas - regresión](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/notebooks/02b%20-%20Predicción%20usando%20variables%20dicotómicas%20-%20regresión.ipynb)
-* [3 - Reducción de la dimensionalidad SVD y PCA](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/notebooks/03%20-%20Reducción%20de%20la%20dimensionalidad%20SVD%20y%20PCA.ipynb)
-* [4 - Conclusión parcial (primera parte)](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/notebooks/4%20-%20Conclusión%20parcial%20(primera%20parte).ipynb4%20-%20Conclusión%20parcial%20(primera%20parte).ipynb)
+* [2a - Regresión Logística y análisis del dataset con R](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/dd5a9d930883ffeebe2ca82cc7d7bd25c41dfe2c/notebooks/2a%20-%20Regresi%C3%B3n%20Log%C3%ADstica%20y%20an%C3%A1lisis%20del%20dataset%20con%20R.ipynb)
+* [2b - Predicción usando variables dicotómicas - regresión](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/dd5a9d930883ffeebe2ca82cc7d7bd25c41dfe2c/notebooks/2b%20-%20Predicci%C3%B3n%20usando%20variables%20dicot%C3%B3micas%20-%20regresi%C3%B3n.ipynb)
+* [3 - Reducción de la dimensionalidad SVD y PCA](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/dd5a9d930883ffeebe2ca82cc7d7bd25c41dfe2c/notebooks/3%20-%20Reducci%C3%B3n%20de%20la%20dimensionalidad%20SVD%20y%20PCA.ipynb)
+* [4 - Conclusión parcial (primera parte)](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/notebooks/4%20-%20Conclusión%20parcial.ipynb)
 * [5 - Reducción de la dimensionalidad con t-SNE](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/notebooks/5%20-%20Reducción%20de%20la%20dimensionalidad%20con%20t-sne.ipynb)
 * [6 - DatasetParticionado - Predicción usando variables dicotómicas - regresión](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/notebooks/6%20-%20DatasetParticionado%20-%20Predicción%20usando%20variables%20dicotómicas%20-%20regresión.ipynb)
 * [7 - DatasetParticionado PCA y t-SNE](https://nbviewer.jupyter.org/github/hordiales/redpanal-db-analysis/blob/master/notebooks/7%20-%20DatasetParticionado%20PCA%20y%20t-sne.ipynb)
