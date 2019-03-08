@@ -23,8 +23,8 @@ import json
 
 #EXT_FILTER = ['.wav'] # only wavs
 EXT_FILTER = ['.wav', '.mp3', '.m4a', '.ogg', '.oga', '.flac'] # preserver original format
-JSON_MIR_FORMAT = 'json' # json basic format (plain)
-#JSON_MIR_FORMAT = 'jsonld' # json compatible con Audio Commons Ontology
+#JSON_MIR_FORMAT = 'json' # json basic format (plain)
+JSON_MIR_FORMAT = 'jsonld' # json compatible con Audio Commons Ontology
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -45,14 +45,17 @@ def main():
             raise IOError("There is no sound directory")
 
         error_count = 0
+        i = 0
+        tmp_db = open( "tmp-db.csv", 'w' )
         for subdir, dirs, files in os.walk(files_dir):
             for f in files:
                 if not os.path.splitext(f)[1] in EXT_FILTER:
                     continue
                 input_filename = f
                 audio_input = subdir+'/'+f
-                json_output = os.path.splitext(f)[0]+'.json'
-
+                json_output = str(i)+'_'+os.path.splitext(f)[0]+'.json'
+                tmp_db.write( str(i) + ',' + audio_input + ',' + json_output + '\n')
+                i += 1
                 try:
                     print(( "\n*** MIR extract %s\n"%f ))
 
@@ -65,8 +68,9 @@ def main():
                     print(logger.exception(e))
                     error_count += 1 
                     continue
-
+        
         print(("Errors: %i"%error_count))
+        tmp_db.close()
         sys.exit( error_count )
     except Exception as e:
         logger.exception(e)
